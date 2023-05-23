@@ -1,0 +1,491 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% block title %}
+            <title> GG </title>
+        {% endblock title %}
+
+		{% block meta %}
+			<meta charset="UTF-8">
+			<!-- mobile responsive meta -->
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {% endblock meta %}
+
+
+        {% block styles %}
+			<!-- ** Plugins Needed for the Project ** -->
+			<!-- Bootstrap -->
+			<link rel="icon" href="{% static 'images/favicon.png' %}">
+           
+            <!-- CSS FILES START -->
+            <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+            <link href="{% static 'css/color.css' %}" rel="stylesheet">
+            <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+            <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+            <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+		{% endblock styles %}
+
+		{% block stylepage %}
+        <style>
+            .line {
+              border-top: 1px solid #ccc;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            }
+          </style>
+		{% endblock stylepage %}
+
+	</head>
+
+	<body>
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color: #4f94cd">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="margin-right: 50px" href="#">PDF-GENERATOR</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:cover' %}">Cover</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:title' %}">Titles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:subtitle' %}">SubTitles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="font-weight: bold" aria-current="page" href="{% url 'app:preview' %}">Preview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:template' %}">Template</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:boardtitle' %}">Board Title</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:boardelement' %}">Board Element</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container">
+        {% block content %}
+
+            {% comment %} <form method="post">
+                {% csrf_token %}
+                {{ title_form|crispy }}
+                <button type="submit">Filter by Author</button>
+            </form> {% endcomment %}
+
+            {% comment %} {% if cover.template.name == 'Template1' %} {% endcomment %}
+
+                <div id="to_generate">
+                    {% if cover.template.name == 'Template1' %}
+                        {% comment %} {% for covers in cover %} {% endcomment %}
+                            
+                        {% if cover.logo %}
+                            <img src="{{ cover.logo.url }}" style="width: 80px; height: 80px">
+                        {% else %}
+                            <img src="" alt="">
+                        {% endif %}
+                                  
+                            </table>
+                            <p> {{ cover.theme }} </p>
+                        {% comment %} {% endfor %} {% endcomment %}
+
+                        <div>
+                            <h5>SOMMAIRE</h5>
+                            {% for title, subtitles in subtitles_by_title.items %}
+                                <h6>{{ title }}</h6>
+                                <ul>
+                                    {% for subtitle in subtitles %}
+                                        <li>{{ subtitle }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </div>
+
+                        {% for title, subtitles in subtitles_by_title.items %}
+                            <h2>{{ title }} (page {{ forloop.counter }})</h2>
+                            {% for subtitle in subtitles %}
+                                <p>- {{ subtitle }} (page {{ forloop.parentloop.counter }})</p>
+                            {% endfor %}
+                        {% endfor %}
+
+                        
+                        {% comment %} <div class="container"> {% endcomment %}
+                            {% comment %} <div class="row"> {% endcomment %}
+                                {% for title, subtitles in subtitles_by_title.items %}
+                                    <h2 style="margin-bottom: 25px; margin-top: 40px; text-align: center; color: #4f94cd; font-weight: bold">{{ title }}</h2>
+                                    <table>
+                                        {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                            <tr>
+                                                {% for subtitle in subtitles %}
+                                                    <td>
+                                                        <h5 style="color: #4f94cd;">{{ subtitle }}</h5>
+                                                        <p style="text-align: justify;">{{ subtitle.description }}</p>
+                                                        {% if subtitle.image %}
+                                                            <img src="{{ subtitle.image.url }}" style="width: 180px; height: 180px">
+                                                        {% else %}
+                                                            <img src="" alt="">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td style="width: 20px">
+
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% comment %} {% endfor %} {% endcomment %}
+                                        </table>
+                                {% endfor %}
+                            {% comment %} </div> {% endcomment %}
+                        {% comment %} </div> {% endcomment %}
+                    {% else %}
+                        <p> {{ cover.theme }} </p>
+                            {% if cover.logo %}
+                                <img src="{{ cover.logo.url }}" style="width: 80px; height: 80px">
+                            {% else %}
+                                <img src="" alt="">
+                            {% endif %}
+                        {% comment %} {% endfor %} {% endcomment %}
+
+                        <div>
+                            <h5>SOMMAIRE</h5>
+                            {% for title, subtitles in subtitles_by_title.items %}
+                                <h6>{{ title }}</h6>
+                                <ul>
+                                    {% for subtitle in subtitles %}
+                                        <li>{{ subtitle }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </div>
+
+                        
+                        {% comment %} <div class="container"> {% endcomment %}
+                            {% comment %} <div class="row"> {% endcomment %}
+                                {% for title, subtitles in subtitles_by_title.items %}
+                                    <h2 style="margin-bottom: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">{{ title }}</h2>
+                                    
+                                        {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                            
+                                                {% for subtitle in subtitles %}
+                                                    
+                                                        <h5 style="color: #800000;">{{ subtitle }}</h5>
+                                                        <p style="text-align: justify;">{{ subtitle.description }}</p>
+                                                        {% if subtitle.image %}
+                                                            <img src="{{ subtitle.image.url }}" style="width: 180px; height: 180px">
+                                                        {% else %}
+                                                            <img src="" alt="">
+                                                        {% endif %}
+                                                    
+
+                                                    
+                                                {% endfor %}
+                                        
+                                        {% comment %} {% endfor %} {% endcomment %}
+                                        
+                                {% endfor %}
+                                
+                                {% comment %} {% for boardtitle, boardelements in boardelements_by_boardtitle.items  %} 
+                                     <table>
+                                        <thead>
+                                            <tr>
+                                                <th>{{ boardtitle }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for boardelement in boardelements %}
+                                                <tr>
+                                                    <td>{{ boardelement.element }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table> 
+                                {% endfor %} {% endcomment %}
+
+                                
+                                <div class="row">
+                                    {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                      <div class="col">
+                                        <h6 class="border">{{ boardtitle }}</h6>
+                                        {% for boardelement in boardelements %}
+                                          <p class="border">{{ boardelement.element }}</p>
+                                        {% endfor %}
+                                      </div>
+                                    {% endfor %}
+                                </div>
+                              
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <tbody>
+                                        <tr>
+                                          {% for boardtitle in boardelements_by_boardtitle %}
+                                            <th>{{ boardtitle }}</th>
+                                          {% endfor %}
+                                        </tr>
+                                        <tr>
+                                          {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                            <td>
+                                              {% comment %} <h6>{{ boardtitle }}</h6> {% endcomment %}
+                                              {% for boardelement in boardelements %}
+                                                <p>{{ boardelement.element }}</p>
+                                                <hr>
+                                              {% endfor %}
+                                            </td>
+                                          {% endfor %}
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <tbody>
+                                        <tr>
+                                          {% for boardtitle in boardelements_by_boardtitle %}
+                                            <th>{{ boardtitle }}</th>
+                                          {% endfor %}
+                                        </tr>
+                                        <tr>
+                                          {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                            <td>
+                                              {% comment %} <h6>{{ boardtitle }}</h6> {% endcomment %}
+                                              <table>
+                                                {% for boardelement in boardelements %}
+                                                  <tr>
+                                                    <td>{{ boardelement.element }}</td>
+                                                  </tr>
+                                                  {% if not loop.last %}
+                                                    <tr class="table-divider"></tr>
+                                                  {% endif %}
+                                                {% endfor %}
+                                              </table>
+                                            </td>
+                                          {% endfor %}
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <tbody>
+                                        <tr>
+                                          {% for boardtitle in boardelements_by_boardtitle %}
+                                            <th>{{ boardtitle }}</th>
+                                          {% endfor %}
+                                        </tr>
+                                        {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                          {% for boardelement in boardelements %}
+                                            <tr>
+                                              {% for boardtitle2, boardelements2 in boardelements_by_boardtitle.items %}
+                                                {% if boardtitle == boardtitle2 %}
+                                                  <td>
+                                                    <h6>{{ boardtitle }}</h6>
+                                                    <p>{{ boardelement.element }}</p>
+                                                    <div class="line"></div>
+                                                  </td>
+                                                {% comment %} {% else %}
+                                                  <td></td> {% endcomment %}
+                                                {% endif %}
+                                              {% endfor %}
+                                            </tr>
+                                          {% endfor %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                  </div>
+
+                                  
+
+                                    
+                                    {% comment %} <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">{{ boardtitle }}</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for boardelement in boardelements %}
+                                                <tr>
+                                                    <td>{{ boardelement.element }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                      </table>
+
+                                      
+                                 {% endfor %} {% endcomment %}
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                          <th>{{ boardtitle }}</th>
+                                        {% endfor %}
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                        <tr>
+                                          {% for boardelement in boardelements %}
+                                            <td>{{ boardelement.element }}</td>
+                                          {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                {% comment %} <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>Subtitles</th>
+                                        {% for title in boardtitles %}
+                                          <th>{{ title.name }}</th>
+                                        {% endfor %}
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for i in 0|lengthrange:boardtitles.0.subtitle_set.all|length %}
+                                        <tr>
+                                          <td>{{ boardtitles.0.subtitle_set.all|get_item:i.name }}</td>
+                                          {% for title in titles %}
+                                            <td>{{ title.subtitle_set.all|get_item:i.name }}</td>
+                                          {% endfor %}
+                                        </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                  </table> {% endcomment %}
+
+                                
+                                {% comment %} <table class="table table-bordered">
+                                    <tbody>
+                                      {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                        <tr>
+                                          <th>{{ boardtitle }}</th>
+                                        </tr>
+                                        {% for boardelement in boardelements %}
+                                          <tr>
+                                            <td>{{ boardelement.element }}</td>
+                                          </tr>
+                                        {% endfor %}
+                                      {% endfor %}
+                                    </tbody>
+                                  </table> {% endcomment %}
+                                  
+
+                                  {% comment %} <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                          <th>{{ boardtitle }}</th>
+                                        {% endfor %}
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                        {% with elements=[] %}
+                                          {% for boardelement in boardelements %}
+                                            {% if forloop.first %}
+                                              {% with elements=elements|add:[boardelement.element] %}
+                                              {% endif %}
+                                            {% if not forloop.first %}
+                                              {% with elements=elements|add:[boardelement.element] %}
+                                              {% endwith %}
+                                            {% endif %}
+                                          {% endfor %}
+                                          <tr>
+                                            {% for element in elements %}
+                                              <td>{{ element }}</td>
+                                            {% endfor %}
+                                          </tr>
+                                        {% endwith %}
+                                      {% endfor %}
+                                    </tbody>
+                                  </table> {% endcomment %}
+
+                    {% endif %}            
+                </div>
+
+                <a href="{% url 'app:download_pdf' %}" target="_blank" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a>
+                {% comment %} <a href="{% url 'app:preview' %}">Download PDF</a> {% endcomment %}
+
+            {% comment %} {% else %} {% endcomment %}
+
+                {% comment %} <div id="to_generate"> {% endcomment %}
+                    {% comment %} {% for covers in cover %} {% endcomment %}
+                        {% comment %} <p> {{ cover.theme }} </p>
+                        {% if cover.logo %}
+                            <img src="{{ cover.logo.path }}" style="width: 80px; height: 80px">
+                        {% else %}
+                            <img src="" alt="">
+                        {% endif %} {% endcomment %}
+                    {% comment %} {% endfor %} {% endcomment %}
+
+                    {% comment %} <div>
+                        <h5>SOMMAIRE</h5>
+                        {% for title, subtitles in subtitles_by_title.items %}
+                            <h6>{{ title }}</h6>
+                            <ul>
+                                {% for subtitle in subtitles %}
+                                    <li>{{ subtitle }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div> {% endcomment %}
+
+                    
+                    {% comment %} <div class="container"> {% endcomment %}
+                        {% comment %} <div class="row"> {% endcomment %}
+                            {% comment %} {% for title, subtitles in subtitles_by_title.items %}
+                                <h2 style="margin-bottom: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">{{ title }}</h2> {% endcomment %}
+                                
+                                    {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                        
+                                            {% comment %} {% for subtitle in subtitles %}
+                                                
+                                                    <h5 style="color: #800000;">{{ subtitle }}</h5>
+                                                    <p style="text-align: justify;">{{ subtitle.description }}</p>
+                                                    {% if subtitle.image %}
+                                                        <img src="{{ subtitle.image.path }}" style="width: 180px; height: 180px">
+                                                    {% else %}
+                                                        <img src="" alt="">
+                                                    {% endif %}
+                                                
+
+                                                
+                                            {% endfor %} {% endcomment %}
+                                    
+                                    {% comment %} {% endfor %} {% endcomment %}
+                                    
+                            {% comment %} {% endfor %} {% endcomment %}
+                        {% comment %} </div> {% endcomment %}
+                    {% comment %} </div> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+
+                {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-success" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
+
+            {% comment %} {% endif %} {% endcomment %}
+            {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-success" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
+
+        {% endblock %}
+        </div>
+    </body>
+</html>

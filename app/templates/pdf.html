@@ -1,0 +1,406 @@
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% block title %}
+            <title> GG </title>
+        {% endblock title %}
+
+		{% block meta %}
+			<meta charset="UTF-8">
+			<!-- mobile responsive meta -->
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {% endblock meta %}
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        {% block styles %}
+			<!-- ** Plugins Needed for the Project ** -->
+			<!-- Bootstrap -->
+			<link rel="icon" href="{% static 'images/favicon.png' %}">
+           
+            <!-- CSS FILES START -->
+            <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+            <link href="{% static 'css/color.css' %}" rel="stylesheet">
+            <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+            <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+            <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+            <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+		{% endblock styles %}
+
+		{% block stylepage %}
+            <style>
+                /*.cover{
+                    background-image: url('{% static "images/favicon.png" %}')                    
+                }*/
+                .logo{
+                    margin-bottom: 30px;
+                }
+                .line1{
+                    width: 400px;
+                    height: 7px;
+                    background-color: black;
+                }
+                .theme{
+                    text-align: center;
+                    font-family: cursive;
+                }
+                /*.table
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }*/
+                .table{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                .th{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                .td{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+            </style>
+		{% endblock stylepage %}
+
+	</head>
+
+	<body>
+
+
+
+        {% block content %}
+
+            {% comment %} <form method="post">
+                {% csrf_token %}
+                {{ title_form|crispy }}
+                <button type="submit">Filter by Author</button>
+            </form> {% endcomment %}
+
+            {% comment %} {% if cover.template.name == 'Template1' %} {% endcomment %}
+
+                <div id="to_generate">
+                    {% if cover.template.name == 'Template1' %}
+                        {% comment %} {% for covers in cover %} {% endcomment %}
+                        <div class="cover">
+                            <table class="logo">
+                                <tr>
+                                    <td style="width: 300px">
+                                        
+                                    </td>
+                                    <td class="">
+                                        {% if cover.logo %}
+                                            <img src="{{ cover.logo.path }}" style="width: 90px; height: 90px;">
+                                        {% else %}
+                                            <img src="" alt="">
+                                        {% endif %}
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="">
+                                <tr>
+                                    <td style="width: 150px">
+                                        
+                                    </td>
+                                    <td class="line1">
+                                        
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="theme" style="margin-top: 100px; font-size: 60px; margin-bottom: 100px; color: #4f94cd;">THEME: {{ cover.theme|upper }} </p>
+                            <table style="">
+                                <tr>
+                                    <td style="width: 260px">
+                                        
+                                    </td>
+                                    <td class="date">
+                                        {% language 'fr' %}
+                                            <h2 style="font-size: 25px;">{% now 'd-M-Y' %}</h2>
+                                        {% endlanguage %}
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="">
+                                <tr>
+                                    <td style="width: 150px">
+                                        
+                                    </td>
+                                    <td class="line1">
+                                        
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            {% comment %} {% endfor %} {% endcomment %}
+                            <div>
+                                <pdf:nextpage /> 
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 35px; color: #4f94cd;">SOMMAIRE</h3>
+                            {% for title, subtitles in subtitles_by_title.items %}
+                                <h6 style="font-size: 16px;">{{ title }}............................................................</h6>
+                                <ul>
+                                    {% for subtitle in subtitles %}
+                                        <li style="font-size: 13px;">{{ subtitle }}............................................................</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <pdf:nextpage /> 
+                        </div>
+
+                        {% comment %} {% for title, subtitles in subtitles_by_title.items %}
+                            <h2>{{ title }} (page {{ forloop.counter }})</h2>
+                            {% for subtitle in subtitles %}
+                                <p>- {{ subtitle }} (page {{ forloop.parentloop.counter }})</p>
+                            {% endfor %}
+                        {% endfor %} {% endcomment %}
+
+
+                        {% comment %} <div class="container"> {% endcomment %}
+                            {% comment %} <div class="row"> {% endcomment %}
+                                {% for title, subtitles in subtitles_by_title.items %}
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #4f94cd; font-weight: bold">{{ title }}</h2>
+                                    <table>
+                                        {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                            <tr>
+                                                {% for subtitle in subtitles %}
+                                                    <td>
+                                                        <h5 style="color: #4f94cd; font-size: 20px;">{{ subtitle }}</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">{{ subtitle.description }}</p>
+                                                        {% if subtitle.image %}
+                                                            <img src="{{ subtitle.image.path }}" style="width: 180px; height: 180px">
+                                                        {% else %}
+                                                            <img src="" alt="">
+                                                        {% endif %}
+                                                    </td>
+                                                    <td style="width: 20px">
+
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% comment %} {% endfor %} {% endcomment %}
+                                        </table>
+                                {% endfor %}
+                            {% comment %} </div> {% endcomment %}
+                        {% comment %} </div> {% endcomment %}
+                        
+
+                    {% else %}
+                        {% comment %} {% for covers in cover %} {% endcomment %}
+                            <div class="cover">
+                                <table class="logo">
+                                    <tr>
+                                        <td style="width: 300px">
+                                            
+                                        </td>
+                                        <td class="">
+                                            {% if cover.logo %}
+                                                <img src="{{ cover.logo.path }}" style="width: 90px; height: 90px;">
+                                            {% else %}
+                                                <img src="" alt="">
+                                            {% endif %}
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 150px">
+                                            
+                                        </td>
+                                        <td class="line1">
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p class="theme" style="margin-top: 100px; font-size: 60px; margin-bottom: 100px; color: #800000;">THEME: {{ cover.theme|upper }} </p>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 260px">
+                                            
+                                        </td>
+                                        <td class="date">
+                                            {% language 'fr' %}
+                                                <h2 style="font-size: 25px;">{% now 'd-M-Y' %}</h2>
+                                            {% endlanguage %}
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 150px">
+                                            
+                                        </td>
+                                        <td class="line1">
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                {% comment %} {% endfor %} {% endcomment %}
+                                <div>
+                                    <pdf:nextpage /> 
+                                </div>
+                            </div>
+                        {% comment %} {% endfor %} {% endcomment %}
+
+                        <div>
+                            <h3 style="font-size: 35px; color: #800000;">SOMMAIRE</h3>
+                            {% for title, subtitles in subtitles_by_title.items %}
+                                <h6 style="font-size: 16px;">{{ title }}............................................................</h6>
+                                <ul>
+                                    {% for subtitle in subtitles %}
+                                        <li style="font-size: 13px;">{{ subtitle }}............................................................</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <pdf:nextpage /> 
+                        </div>
+
+                        
+                                {% for title, subtitles in subtitles_by_title.items %}
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">{{ title }}</h2>
+                                    
+                                        {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                            
+                                                {% for subtitle in subtitles %}
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">{{ subtitle }}</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">{{ subtitle.description }}</p>
+                                                        {% if subtitle.image %}
+                                                            <img src="{{ subtitle.image.path }}" style="width: 180px; height: 180px">
+                                                        {% else %}
+                                                            <img src="" alt="">
+                                                        {% endif %}
+                                                    
+
+                                                    
+                                                {% endfor %}
+                                        
+                                        {% comment %} {% endfor %} {% endcomment %}
+                                        
+                                {% endfor %}
+
+                                <br><br>
+
+                                {% comment %} <div class="table-responsive"> {% endcomment %}
+                                    <table class="table table-bordered">
+                                      <tbody>
+                                        <tr>
+                                          {% for boardtitle in boardelements_by_boardtitle %}
+                                            <th class="th">{{ boardtitle }}</th>
+                                          {% endfor %}
+                                        </tr>
+                                        <tr>
+                                          {% for boardtitle, boardelements in boardelements_by_boardtitle.items %}
+                                            <td class="td">
+                                              {% comment %} <h6>{{ boardtitle }}</h6> {% endcomment %}
+                                              {% for boardelement in boardelements %}
+                                                <p>{{ boardelement.element }}</p>
+                                                <hr>
+                                              {% endfor %}
+                                            </td>
+                                          {% endfor %}
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                {% comment %} </div>  {% endcomment %}
+                    {% endif %}            
+                </div>
+
+                {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
+                {% comment %} <a href="{% url 'app:preview' %}">Download PDF</a> {% endcomment %}
+
+            {% comment %} {% else %} {% endcomment %}
+
+                {% comment %} <div id="to_generate"> {% endcomment %}
+                    {% comment %} {% for covers in cover %} {% endcomment %}
+                        {% comment %} <p> {{ cover.theme }} </p>
+                        {% if cover.logo %}
+                            <img src="{{ cover.logo.path }}" style="width: 80px; height: 80px">
+                        {% else %}
+                            <img src="" alt="">
+                        {% endif %} {% endcomment %}
+                    {% comment %} {% endfor %} {% endcomment %}
+
+                    {% comment %} <div>
+                        <h5>SOMMAIRE</h5>
+                        {% for title, subtitles in subtitles_by_title.items %}
+                            <h6>{{ title }}</h6>
+                            <ul>
+                                {% for subtitle in subtitles %}
+                                    <li>{{ subtitle }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div> {% endcomment %}
+
+                    
+                    {% comment %} <div class="container"> {% endcomment %}
+                        {% comment %} <div class="row"> {% endcomment %}
+                            {% comment %} {% for title, subtitles in subtitles_by_title.items %}
+                                <h2 style="margin-bottom: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">{{ title }}</h2> {% endcomment %}
+                                
+                                    {% comment %} {% for subtitle in subtitles %} {% endcomment %}
+                                        
+                                            {% comment %} {% for subtitle in subtitles %}
+                                                
+                                                    <h5 style="color: #800000;">{{ subtitle }}</h5>
+                                                    <p style="text-align: justify;">{{ subtitle.description }}</p>
+                                                    {% if subtitle.image %}
+                                                        <img src="{{ subtitle.image.path }}" style="width: 180px; height: 180px">
+                                                    {% else %}
+                                                        <img src="" alt="">
+                                                    {% endif %}
+                                                
+
+                                                
+                                            {% endfor %} {% endcomment %}
+                                    
+                                    {% comment %} {% endfor %} {% endcomment %}
+                                    
+                            {% comment %} {% endfor %} {% endcomment %}
+                        {% comment %} </div> {% endcomment %}
+                    {% comment %} </div> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+
+                {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-success" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
+
+            {% comment %} {% endif %} {% endcomment %}
+            {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-success" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
+        {% endblock %}
+    </body>
+</html>

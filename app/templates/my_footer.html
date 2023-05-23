@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="footer">
+            Page <span class="page"></span> of <span class="topage"></span>
+        </div>
+        <script type="text/javascript">
+            function numberPages() {
+                var vars = {};
+                var x = document.location.search.substring(1).split('&');
+                for (var i in x) {
+                    var z = x[i].split('=', 2);
+                    vars[z[0]] = unescape(z[1]);
+                }
+                var xhtml = document.getElementsByTagName('html')[0];
+                var total = xhtml.offsetHeight;
+                var html = xhtml.innerHTML;
+                var page = 1;
+                var match;
+                var regex = /<body[^>]*>/gi;
+                var body = html.replace(regex, function(w) {
+                    return w + '<div class="pagebreak"></div>';
+                });
+                xhtml.innerHTML = body;
+                do {
+                    match = /<div class="pagebreak"><\/div>/g.exec(html);
+                    if (match != null) {
+                        page++;
+                    }
+                    html = html.replace(/<div class="pagebreak"><\/div>/, '');
+                } while (match != null);
+                xhtml.innerHTML = html;
+                for (var i = 1; i <= page; i++) {
+                    var span = document.createElement('span');
+                    span.className = 'page';
+                    span.appendChild(document.createTextNode(i));
+                    xhtml.appendChild(span);
+                    xhtml.appendChild(document.createTextNode(' '));
+                }
+                vars['page'] = page;
+                var spant = document.createElement('span');
+                spant.className = 'topage';
+                spant.appendChild(document.createTextNode(page));
+                xhtml.appendChild(document.createTextNode(' of '));
+                xhtml.appendChild(spant);
+            }
+            numberPages();
+        </script>
+    </body>
+</html>
