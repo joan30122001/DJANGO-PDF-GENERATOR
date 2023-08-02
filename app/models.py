@@ -52,3 +52,8 @@ class BoardTitle(models.Model):
 class BoardElement(models.Model):
     boardtitle = models.ForeignKey('BoardTitle', on_delete=models.CASCADE)
     element = models.CharField(max_length=200, blank=True)
+
+
+
+class ChartImage(models.Model):
+    image = models.ImageField(upload_to='chart_images/')

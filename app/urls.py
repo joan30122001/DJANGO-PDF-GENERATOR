@@ -16,4 +16,11 @@ urlpatterns = [
     # path('download-pdf/', views.download_pdf, name='download_pdf'),
     # path('pdf/', MyPDFView.as_view(), name='download_pdf'),
     path('pdf/', generate_pdf, name='download_pdf'),
+    # path('chart-image-upload/', ChartImageUploadView.as_view(), name='chart_image_upload'),
+
+    path('chart/', views.chart, name='chart'),
+    path('charts/', views.charts, name='charts'),
+
+    path('preview1/', views.preview1, name='preview1'),
+    path('generate_word/', views.generate_word, name='generate_word'),
 ]

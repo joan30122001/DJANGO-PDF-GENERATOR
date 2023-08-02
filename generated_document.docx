@@ -1,0 +1,578 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        
+            <title> GG </title>
+        
+
+		
+			<meta charset="UTF-8">
+			<!-- mobile responsive meta -->
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+			<!-- ** Plugins Needed for the Project ** -->
+			<!-- Bootstrap -->
+			<link rel="icon" href="/static/images/favicon.png">
+           
+            <!-- CSS FILES START -->
+            <link href="/static/css/custom.css" rel="stylesheet">
+            <link href="/static/css/color.css" rel="stylesheet">
+            <link href="/static/css/responsive.css" rel="stylesheet">
+            <link href="/static/css/owl.carousel.min.css" rel="stylesheet">
+            <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+            <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+            <link href="/static/css/all.min.css" rel="stylesheet">
+            <link href="/static/css/slick.css" rel="stylesheet">
+		
+
+		
+            <style>
+                pdftoc {
+                    color: #666;
+                }
+                pdftoc.pdftoclevel0 {
+                    font-weight: bold;
+                    margin-top: 0.5em;
+                }
+                pdftoc.pdftoclevel1 {
+                    margin-left: 1em;
+                }
+                pdftoc.pdftoclevel2 {
+                    margin-left: 2em;
+                    font-style: italic;
+                }
+                /*.cover{
+                    background-image: url('/static/images/favicon.png')                    
+                }*/
+                .logo{
+                    margin-bottom: 30px;
+                }
+                .line1{
+                    width: 400px;
+                    height: 7px;
+                    background-color: black;
+                }
+                .theme{
+                    text-align: center;
+                    font-family: cursive;
+                }
+                /*.table
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }*/
+                .table{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                .th{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                .td{
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+                @page {
+                    size: a4 portrait;
+                    @frame header_frame {           /* Static Frame */
+                        -pdf-frame-content: header_content;
+                        left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+                    }
+                    @frame content_frame {          /* Content Frame */
+                        left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+                    }
+                    @frame footer_frame {           /* Another static Frame */
+                        -pdf-frame-content: footer_content;
+                        left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+                    }
+                }
+            </style>
+		
+
+	</head>
+
+	<body>
+
+
+
+        
+
+            
+
+            
+
+                <div id="to_generate">
+                    
+                        
+                            <div class="cover">
+                                <table class="logo">
+                                    <tr>
+                                        <td style="width: 300px">
+                                            
+                                        </td>
+                                        <td class="">
+                                            
+                                                <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\logo\marvel3.jpg" style="width: 90px; height: 90px;">
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 150px">
+                                            
+                                        </td>
+                                        <td class="line1">
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p class="theme" style="margin-top: 100px; font-size: 60px; margin-bottom: 100px; color: #800000;">THEME: FINAL YEAR PROJECT CARREER TRANSFORMATION CHALLENGE </p>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 260px">
+                                            
+                                        </td>
+                                        <td class="date">
+                                            
+                                                <h2 style="font-size: 25px;">07-Jul-2023</h2>
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table style="">
+                                    <tr>
+                                        <td style="width: 150px">
+                                            
+                                        </td>
+                                        <td class="line1">
+                                            
+                                        </td>
+                                        <td>
+    
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                <div>
+                                    <pdf:nextpage /> 
+                                </div>
+                            </div>
+                        
+
+                        
+                        <div>
+                            <h3 style="font-size: 35px; color: #800000;">SOMMAIRE</h3>
+                            <pdf:toc />
+                        </div>
+                        
+                        <div>
+                            <pdf:nextpage /> 
+                        </div>
+
+                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">La crise anglophone</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi la crise anglophone</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">D’après des études de terrain et des recherches effectuées dans la documentation librement disponible par Human Rights Watch, au moins 4 000 civils ont été tués aussi bien par les forces gouvernementales que par les combattants séparatistes armés depuis la fin 2016 dans les régions du Nord-Ouest et du Sud-Ouest, les séparatistes réclamant l’indépendance des régions anglophones minoritaires du pays. Le groupe armé islamiste Boko Haram a intensifié ses attaques dans la région de l’Extrême-Nord de janvier à avril ; en août 2021, il avait tué au moins 80 civils et déplacé en interne plus de 340 000 individus. Dans le cadre de leur réponse au conflit armé, les forces gouvernementales ont également commis des atteintes au droit international humanitaire et au droit international des droits humains, y compris des meurtres extrajudiciaires et des arrestations arbitraires.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel1.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Exactions perpétrées par les forces gouvernementales</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi une extraction</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Les forces de sécurité ont répondu par la manière forte aux attaques lancées par les séparatistes, ciblant souvent des civils à travers les régions anglophones.
+
+Le 10 janvier, des soldats de l’armée ont tué au moins neuf civils, dont une femme et un enfant, dans le village de Mautu, dans la région du Sud-Ouest. Les soldats en cause ont aussi pillé des dizaines de foyers et menacé les habitants.
+
+Le 8 juin, dans le village de Gom, dans la région du Nord-Ouest, deux soldats ont fait irruption au domicile d’un fon (figure d’autorité traditionnelle locale) et harcelé les huit personnes présentes, dont un homme âgé de 72 ans qu’ils ont passé à tabac. Ils ont également tué par balle Nwang Lydia, une femme âgée de 60 ans, qui n’avait pas pu fournir d’informations sur un combattant séparatiste.
+
+Le 9 juin, des soldats de l’armée régulière et du Bataillon d’intervention rapide d’élite (BIR) ont tué un homme âgé de 58 ans et violé une femme de 53 ans lors d’une opération de sécurité menée dans et autour du village de Mbuluf, dans la région du Nord-Ouest. Ils ont également fait irruption dans au moins 33 magasins et maisons, qu’ils ont endommagés et pillés, dont la résidence du fon du village de Ndzeen.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel2_tI1imoT.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Exactions perpétrées par les séparatistes armés</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">What is Lorem Ipsum?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Des combattants séparatistes ont continué de tuer, de torturer, d’attaquer et d’enlever des civils. Ils ont aussi poursuivi leurs attaques ciblant le système éducatif. D’après les Nations Unies, 700 000 élèves étaient déscolarisés en mars 2021 du fait de la crise. 
+
+Le 9 janvier, des individus soupçonnés d’être des combattants séparatistes ont tué le proviseur d’un lycée à Eyumojock, dans la région du Sud-Ouest, et blessé le principal d’un autre lycée à Tinto, toujours dans la région du Sud-Ouest. Le 12 janvier, des combattants séparatistes ont blessé par balle une enseignante d’un établissement public à Bamenda, dans la région du Nord-Ouest.
+
+Le 13 février, des combattants séparatistes ont tué trois chefs tribaux dans le village d’Essoh Attah, dans la région du Sud-Ouest. Le 27 février, des séparatistes armés ont enlevé un médecin à Bali, dans la région du Nord-Ouest, et menacé de le tuer, avant de le libérer le même jour après versement d’une rançon.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel3_Yan0LIj.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Obstacles à l’accès humanitaire</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi un obstacle ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">L’accès humanitaire est sérieusement restreint et les travailleurs humanitaires ont été victimes d’attaques perpétrées aussi bien par les forces gouvernementales que par des groupes armés séparatistes. En décembre 2020, les autorités camerounaises ont suspendu toutes les activités de Médecins sans frontières (MSF) dans la région du Nord-Ouest, accusant l’organisation d’être trop proche des séparatistes anglophones. Cette décision a contraint MSF à se retirer de la région, privant des dizaines de milliers de personnes d’un accès à des soins de santé vitaux.
+
+Les combattants séparatistes ont aussi entravé l’accès des agences humanitaires aux zones placées sous leur contrôle. Le 4 février, une infirmière qui travaillait pour une organisation non gouvernementale (ONG) internationale a été blessé par balle quand son ambulance s’est retrouvée prise entre les tirs lors d’une attaque lancée par des séparatistes dans le village de Mbalangi, dans la région du Sud-Ouest. Le 25 juin, des combattants du groupe armé séparatiste des Forces de défense d’Ambazonie (Ambazonia Defense Forces, ADF) ont stoppé un véhicule humanitaire à Guzang, dans la région du Nord-Ouest, enlevé les quatre employés, dont un a été passé à tabac, et les ont libérés le même jour.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel4_mLx3CZq.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Attaques perpétrées par Boko Haram</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi une attaque ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Au premier semestre 2021, les attaques et les descentes menées par le groupe armé islamiste Boko Haram se sont intensifiées dans la région de l’Extrême-Nord, faisant au moins 80 morts parmi les civils. Le 8 janvier, un attentat-suicide de Boko Haram a tué au moins 14 civils, dont 8 enfants, et a blessé trois autres civils, dont deux enfants. La mort présumée, en mai, d’Abubakar Shekau, le chef de Boko Haram, lors d’un affrontement au Nigeria avec une faction dissidente dénommée Province de l’État islamique d’Afrique de l’Ouest (ISWAP), a contribué à consolider le pouvoir d’ISWAP et accru le niveau d’insécurité dans la région camerounaise de l’Extrême-Nord.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel5_07a06zz.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Mesures répressives contre l’opposition politique</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi une mesure représsive</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Le gouvernement a limité la capacité des opposants politiques à opérer librement. Les autorités ont interdit une manifestation organisée par le principal parti d’opposition du pays, le Mouvement pour la renaissance du Cameroun (MRC), prévue pour le 25 juillet à Yaoundé, la capitale, pour « risque de propagation du Covid-19 et menace de trouble à l’ordre public ». Le même jour, une manifestation organisée par des partisans du parti dirigeant a eu lieu à Bertoua, dans la région de l’Est.
+
+Le 9 août, des gendarmes ont arrêté à Douala, de manière arbitraire, Rebecca Enonchong, femme d’affaires de premier plan dans le secteur technologique, défenseure des droits humains et détractrice déclarée du Président Paul Biya. Elle a été maintenue en garde à vue pour « outrage à magistrat » jusqu’au 13 août, date à laquelle elle a été libérée et où toutes les charges retenues contre elles ont été abandonnées.
+
+Au moins 124 membres et sympathisants de partis d’opposition arrêtés en septembre 2020 lors de manifestations pacifiques se trouvaient toujours en détention pour des chefs d’accusation motivés par des critères politiques, dont Olivier Bibou Nissack et Alain Fogué Tedom, deux membres importants du MRC.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel6_K9nD1Yf.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Orientation sexuelle et identité de genre</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi une orientation sexuelle ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Le code pénal camerounais prévoit une peine pouvant aller jusqu’à cinq années de prison en cas de « rapports sexuels avec une personne de son sexe ». Les forces de sécurité ont arrêté arbitrairement, battu ou menacé au moins 24 personnes, dont un adolescent âgé de 17 ans, pour des prétendus rapports sexuels consensuels entre personnes de même sexe ou pour non-conformité de genre. Certains ont été soumis à des examens anaux forcés. Le 11 mai, un tribunal camerounais a condamné Shakiro et Patricia, deux femmes transgenres, à cinq ans de prison et à des amendes de 200 000 CFA (370 dollars US) pour de soi-disant rapports sexuels avec une personne de leur sexe.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel7.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Droits des femmes</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi le droit de la femme ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">La discrimination contre les femmes est un phénomène courant au sein de la société camerounaise et elle est inscrite dans la législation qui subordonne le statut des femmes aux hommes. Le Code civil, en vigueur dans les régions francophones, stipule que l’homme est le chef de la famille (article 213), que le choix de la résidence de la famille appartient au mari (article 215), que les hommes et les femmes ne bénéficient pas de droits égaux en matière de biens immobiliers (article 1428) et que dans le cadre du mariage, les deux époux ne jouissent pas d’une autorité administrative égale concernant leurs biens (articles 1421 et 1428). La violence conjugale est un problème endémique. Aucune législation n’érige spécifiquement en infraction la violence conjugale ou ne prévoit de mesures préventives ou pour promouvoir la protection des survivant·e·s.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel8.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Corruption</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">C&#x27;est quoi la corruption ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">Le gouvernement n’a pas publié d’informations utiles sur les dépenses octroyées au titre du Covid-19, et de nombreux membres du personnel de santé ont signalé n’avoir reçu que peu de soutien, voire aucun, pour appuyer leur réponse à la pandémie. Le Fonds monétaire international (FMI) a accordé au Cameroun deux prêts d’urgence ainsi qu’un programme pluriannuel d’un montant total dépassant le milliard de dollars US, et ce, alors que le gouvernement n’a pas rempli plusieurs des engagements en matière de transparence s’appliquant à ces prêts. Le 19 mai, un organe médiatique camerounais a publié une synthèse du rapport d’audit de la Chambre des comptes, organe d’enquête de la cour suprême, qui révélait en détail une corruption de grande ampleur et une mégestion impliquant 180 milliards de CFA (333 millions de dollars US) dans le cadre de la riposte au Covid-19. Elle recommandait « l’ouverture de dix procédures concernant des faits susceptibles de constituer des infractions à la loi pénale ». Les autorités camerounaises n’ont pas encore commandité ou publié d’audit indépendant des dépenses liées au Covid-19, bien qu’ayant promis au FMI de le faire avant le 31 décembre 2020.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel2_FLfbCbs.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                    <h2 style="margin-bottom: 25px; font-size: 25px; margin-top: 40px; text-align: center; color: #800000; font-weight: bold">Principaux acteurs internationaux</h2>
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        <h5 style="color: #800000; font-size: 20px;">Qui sont ces acteurs ?</h5>
+                                                        <p style="text-align: justify; font-size: 16px;">En janvier, le secrétaire d’État du Vatican s’est rendu au Cameroun et a fait part de la volonté de l’Église catholique romaine de faciliter un dialogue entre le gouvernement et les séparatistes.
+
+Le 7 juin, le secrétaire d’État américain Antony Blinken a annoncé des restrictions relatives à l’obtention de visas « pour les individus dont on estime qu’ils sont responsables ou complices d’actes qui nuisent à la résolution pacifique de la crise dans les régions anglophones du Cameroun » et condamné « les atteintes aux droits humains et les exactions, ainsi que les menaces à l’encontre des défenseurs de la paix ou des travailleurs humanitaires ».
+
+Bien que le Cameroun ne soit pas formellement à l’ordre du jour du Conseil de sécurité de l’ONU, des membres du Conseil s’entretiennent sur ce pays lors de sessions périodiques consacrées au travail du Bureau régional des Nations Unies pour l’Afrique centrale (UNOCA). Human Rights Watch et d’autres organisations ont exhorté le Conseil à formellement afficher à son ordre du jour la crise qui sévit dans les régions anglophones du Cameroun.
+
+En novembre, le Parlement européen a adopté une résolution qui déplore les atteintes aux droits humains au Cameroun et appelle l’UE à redoubler d’efforts pour y répondre. L’UE a à maintes reprises fait part de ses préoccupations au sujet du Cameroun auprès du Conseil des droits de l’homme de l’ONU.</p>
+                                                        
+                                                            <img src="C:\Users\Anonymous\Documents\Freelance\django-pdf-generator\project\media\image\marvel5_6hosR2x.jpg" style="width: 180px; height: 180px">
+                                                        
+                                                    
+
+                                                        
+                                                
+                                                
+                                        
+                                        
+                                
+                                
+                                <br><br>
+
+                                
+                                    <table class="table table-bordered">
+                                      <tbody>
+                                        <tr>
+                                          
+                                            <th class="th">tomate</th>
+                                          
+                                            <th class="th">poivron</th>
+                                          
+                                            <th class="th">poirreau</th>
+                                          
+                                            <th class="th">piment</th>
+                                          
+                                            <th class="th">poivre blanc</th>
+                                          
+                                            <th class="th">celerie</th>
+                                          
+                                        </tr>
+                                        <tr>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>2800</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>850</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>1200</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>700</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>900</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                            <td class="td">
+                                              
+                                              
+                                                <p>250</p>
+                                                <hr>
+                                              
+                                            </td>
+                                          
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+
+                                <div id="container" style="width: 75%;">
+                                    <canvas type="graph" id="population-chart" data-url="/chart/"></canvas>
+                                    <img id="chart-image" src="" alt="Chart Image"/>
+                                </div>
+  
+                                  
+                                  <img src="/charts/" alt="Chart Image">
+
+                                  
+                                     
+                                
+                </div>
+                <div id="footer_content">page <pdf:pagenumber> sur <pdf:pagecount>  </div>
+
+                
+                
+
+            
+
+                
+                    
+                        
+                    
+
+                    
+
+                    
+                    
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                    
+                                    
+                                    
+                            
+                        
+                    
+                
+
+                
+
+            
+            
+        
+       
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $populationChart = $("#population-chart");
+      $.ajax({
+        url: $populationChart.data("url"),
+        success: function (data) {
+
+          var ctx = $populationChart[0].getContext("3d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Element',
+                backgroundColor: '#800000',
+                data: data.data
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Element Bar Chart'
+              }
+            }
+          });
+
+          // Generate image of canvas
+          var chartImg = $populationChart[0].toDataURL("image/png");
+          // Do something with the image, such as display it in an <img> element
+          $("#chart-image").attr("src", chartImg);
+
+        }
+      });
+
+    });
+
+  </script>
+    </body>
+</html>

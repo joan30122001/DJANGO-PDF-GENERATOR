@@ -66,11 +66,11 @@
                             <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:subtitle' %}">SubTitles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" style="font-weight: bold" aria-current="page" href="{% url 'app:preview' %}">Preview</a>
+                            <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:preview' %}">Preview</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:preview1' %}">Preview1</a>
-                      </li>
+                            <a class="nav-link active" style="font-weight: bold" aria-current="page" href="{% url 'app:preview1' %}">Preview1</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" style="font-weight: bold" aria-current="page" href="{% url 'app:template' %}">Template</a>
                         </li>
@@ -344,12 +344,13 @@
                                 </div>
 
                                 <img src="{% url 'app:charts' %}" alt="Chart Image">
-                    
+
+                                
 
                     {% endif %}            
                 </div>
 
-                <a href="{% url 'app:download_pdf' %}" target="_blank" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a>
+                <a href="{% url 'app:generate_word' %}" target="_blank" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">Download WORD</a>
                 {% comment %} <a href="{% url 'app:preview' %}">Download PDF</a> {% endcomment %}
 
             {% comment %} {% else %} {% endcomment %}

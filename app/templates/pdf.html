@@ -35,6 +35,20 @@
 
 		{% block stylepage %}
             <style>
+                pdftoc {
+                    color: #666;
+                }
+                pdftoc.pdftoclevel0 {
+                    font-weight: bold;
+                    margin-top: 0.5em;
+                }
+                pdftoc.pdftoclevel1 {
+                    margin-left: 1em;
+                }
+                pdftoc.pdftoclevel2 {
+                    margin-left: 2em;
+                    font-style: italic;
+                }
                 /*.cover{
                     background-image: url('{% static "images/favicon.png" %}')                    
                 }*/
@@ -66,6 +80,21 @@
                 .td{
                     border: 1px solid black;
                     border-collapse: collapse;
+                }
+
+                @page {
+                    size: a4 portrait;
+                    @frame header_frame {           /* Static Frame */
+                        -pdf-frame-content: header_content;
+                        left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+                    }
+                    @frame content_frame {          /* Content Frame */
+                        left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+                    }
+                    @frame footer_frame {           /* Another static Frame */
+                        -pdf-frame-content: footer_content;
+                        left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+                    }
                 }
             </style>
 		{% endblock stylepage %}
@@ -275,17 +304,22 @@
                             </div>
                         {% comment %} {% endfor %} {% endcomment %}
 
+                        
                         <div>
                             <h3 style="font-size: 35px; color: #800000;">SOMMAIRE</h3>
+                            <pdf:toc />
+                        </div>
+                        {% comment %} <div>
+                            <h3 style="font-size: 35px; color: #800000;">SOMMAIRE</h3>
                             {% for title, subtitles in subtitles_by_title.items %}
-                                <h6 style="font-size: 16px;">{{ title }}............................................................</h6>
+                                <h6 style="font-size: 16px;">{{ title }}...........................................................</h6>
                                 <ul>
                                     {% for subtitle in subtitles %}
-                                        <li style="font-size: 13px;">{{ subtitle }}............................................................</li>
+                                        <li style="font-size: 13px;">{{ subtitle }}...........................................................</li>
                                     {% endfor %}
                                 </ul>
                             {% endfor %}
-                        </div>
+                        </div> {% endcomment %}
                         <div>
                             <pdf:nextpage /> 
                         </div>
@@ -307,13 +341,13 @@
                                                         {% endif %}
                                                     
 
-                                                    
+                                                        
                                                 {% endfor %}
+                                                
                                         
                                         {% comment %} {% endfor %} {% endcomment %}
-                                        
                                 {% endfor %}
-
+                                
                                 <br><br>
 
                                 {% comment %} <div class="table-responsive"> {% endcomment %}
@@ -338,8 +372,22 @@
                                       </tbody>
                                     </table>
                                 {% comment %} </div>  {% endcomment %}
+
+                                <div id="container" style="width: 75%;">
+                                    <canvas type="graph" id="population-chart" data-url="{% url 'app:chart' %}"></canvas>
+                                    <img id="chart-image" src="" alt="Chart Image"/>
+                                </div>
+  
+                                  {% comment %} <img src="{% url 'app:charts' %}" alt="Chart Image">  {% endcomment %}
+                                  <img src="{% url 'app:charts' %}" alt="Chart Image">
+
+                                  <img src="{{ image_url }}" alt="Chart Image" style="height 500px">
+
+                                  
+                                     
                     {% endif %}            
                 </div>
+                <div id="footer_content">page <pdf:pagenumber> sur <pdf:pagecount>  </div>
 
                 {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
                 {% comment %} <a href="{% url 'app:preview' %}">Download PDF</a> {% endcomment %}
@@ -402,5 +450,53 @@
             {% comment %} {% endif %} {% endcomment %}
             {% comment %} <a href="{% url 'app:download_pdf' %}" class="btn btn-success" style="margin-top: 20px; margin-bottom: 20px">Download PDF</a> {% endcomment %}
         {% endblock %}
+       
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $populationChart = $("#population-chart");
+      $.ajax({
+        url: $populationChart.data("url"),
+        success: function (data) {
+
+          var ctx = $populationChart[0].getContext("3d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Element',
+                backgroundColor: '#800000',
+                data: data.data
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Element Bar Chart'
+              }
+            }
+          });
+
+          // Generate image of canvas
+          var chartImg = $populationChart[0].toDataURL("image/png");
+          // Do something with the image, such as display it in an <img> element
+          $("#chart-image").attr("src", chartImg);
+
+        }
+      });
+
+    });
+
+  </script>
     </body>
 </html>
